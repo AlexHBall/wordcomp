@@ -14,4 +14,4 @@ def home_view(request):
     data = json.loads(r.data.decode('utf-8'))
     html = "<html><body><pre>Data: %s.</pre></body></html>" % json.dumps(
         data, indent=2)
-    return HttpResponse(html)
+    return render(request, 'dict/home_screen.html', {})

@@ -9,4 +9,5 @@ from .views import (
 app_name = 'dict'
 urlpatterns = [
     path('', home_view, name='home'),
+    
 ]

@@ -2,10 +2,11 @@ from django.shortcuts import render, HttpResponse, redirect
 from django.core import serializers
 
 from .forms import EnterWordsForm
-
+from .models import Word
 import urllib3
 import json
-
+from flatten_dict import flatten
+import pprint
 # Create your views here.
 
 
@@ -21,12 +22,13 @@ def home_view(request):
         data = []
         for url in urls:
             r = http.request('GET', url)
-            json_returned = r.data.decode('utf-8')
-            request.session["WORDS"] = json_returned
+            json_returned = json.loads(r.data.decode('utf-8'))
+            data.append(json_returned)
+            # request.session["WORDS"] = json_returned 
             # data.append(json.loads(r.data.decode('utf-8')))
 
-        # print(data)
-        # request.session["WORDS"] = data
+        print(data)
+        request.session["WORDS"] = data
     request.session.flush()
     word_form = EnterWordsForm(request.POST or None)
     context = {'form': word_form}
@@ -39,8 +41,15 @@ def home_view(request):
 
 
 def words_view(request):
-    context = {}
     if request.session.has_key('WORDS'):
         data = request.session['WORDS']
-        context = {'data' : data}
+        jsons = []
+        for d in data:
+            jsons.append(d)
+
+    words = [Word(j[0]) for j in jsons]
+
+    context = {
+        'words' : [w.return_dict() for w in words]
+    }
     return render(request, 'dict/words.html', context)

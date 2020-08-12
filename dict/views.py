@@ -21,11 +21,13 @@ def home_view(request):
         data = []
         for url in urls:
             r = http.request('GET', url)
-            data.append(json.loads(r.data.decode('utf-8')))
+            json_returned = r.data.decode('utf-8')
+            request.session["WORDS"] = json_returned
+            # data.append(json.loads(r.data.decode('utf-8')))
 
-        
-        request.session["WORDS"] = serializers.serialize(data)
-
+        # print(data)
+        # request.session["WORDS"] = data
+    request.session.flush()
     word_form = EnterWordsForm(request.POST or None)
     context = {'form': word_form}
 
@@ -37,15 +39,8 @@ def home_view(request):
 
 
 def words_view(request):
-    def get_words():
-        words=[]
-        words_from_session = serializers.deserialize(
-            "json", request.session.get("WORDS"))
-
-        for word in words_from_session:
-            words.append(word.object)
-
-        return words
-    words = get_words()
-    print(words)
-    return render(request, 'dict/words.html', {})
+    context = {}
+    if request.session.has_key('WORDS'):
+        data = request.session['WORDS']
+        context = {'data' : data}
+    return render(request, 'dict/words.html', context)

@@ -10,5 +10,5 @@ from .views import (
 app_name = 'dict'
 urlpatterns = [
     path('', home_view, name='home'),
-    path('words',words_view, name='words')
+    path('words/',words_view, name='words')
 ]

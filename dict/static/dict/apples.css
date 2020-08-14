@@ -1,0 +1,8 @@
+.float-container {
+    display: flex;
+}
+
+.float-child {
+    width: 50%;
+    padding: 15px;
+} 

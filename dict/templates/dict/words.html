@@ -1,19 +1,24 @@
-{% extends 'base.html' %} {% block content %} {% load static %}
-<link rel="stylesheet" href="{% static 'dict/style.css' %}" />
+{% extends 'base.html' %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'dict/apples.css' %}" />
 <div>
   <h1>Words Compared!</h1>
 </div>
-{% for instance in words %}
-
-<h2>Word {{instance.word}}</h2>
-<h3>Phonetics {{instance.phonetics}}</h3>
-<h3>Gender - {{instance.gender}}</h3>
-{% for def in instance.definitions %}
-<div>
-  <h3>Defition</h3>
-  <p>{{ def.definition}}</p>
-  <p>Example {{ def.example}}</p>
-  <p>Synonyms {{ def.synonyms}}</p>
-  <p>Antonyms {{ def.antonyms}}</p>
+<div class="float-container">
+  {% for instance in words %}
+  <div class="float-child">
+    <h2>Word {{instance.word}}</h2>
+    <h3>Phonetics {{instance.phonetics}}</h3>
+    <h3>Gender - {{instance.gender}}</h3>
+    <div>
+      {% for def in instance.definitions %}
+      <h3>Defition</h3>
+      <p>{{ def.definition}}</p>
+      <p>Example {{ def.example}}</p>
+      <p>Synonyms {{ def.synonyms}}</p>
+      <p>Antonyms {{ def.antonyms}}</p>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
 </div>
-{% endfor %} {% endfor %} {% endblock %}
+{% endblock %}

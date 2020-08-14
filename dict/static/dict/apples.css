@@ -1,3 +1,6 @@
+* {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
 .float-container {
   display: flex;
 }
@@ -19,5 +22,5 @@ entry-form {
 }
 
 .title {
-    text-align: center;
+  text-align: center;
 }

@@ -1,8 +1,23 @@
 .float-container {
-    display: flex;
+  display: flex;
 }
 
 .float-child {
-    width: 50%;
-    padding: 15px;
-} 
+  width: 50%;
+  padding: 15px;
+}
+
+div.entry-form {
+  display: block;
+  text-align: center;
+}
+entry-form {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.title {
+    text-align: center;
+}

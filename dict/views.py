@@ -12,8 +12,8 @@ import pprint
 
 def home_view(request):
     def get_words(form):
-        words = [form.cleaned_data['first_word'],
-                 form.cleaned_data['second_word']]
+        form_data = form.cleaned_data['words']
+        words = form_data.split(" ")
         http = urllib3.PoolManager()
         base_url = "https://api.dictionaryapi.dev/api/v1/entries/fr/"
         urls = []

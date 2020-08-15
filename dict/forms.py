@@ -9,6 +9,6 @@ class EnterWordsForm(forms.Form):
     #                         widget=forms.CharField(attrs={'class': 'words-input'}))
 
     words = forms.CharField(label='Enter words to compare', max_length=100,
-                            widget=forms.TextInput(attrs={'class': 'words-input'}))
+                            widget=forms.TextInput(attrs={'class': 'words-input'}), required=False)
     to_search = forms.CharField(widget=forms.HiddenInput(
-        attrs={'class': 'words-input'}), required=False)
+        attrs={'class': 'words-hidden'}), required=False)

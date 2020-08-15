@@ -12,7 +12,7 @@ import pprint
 
 def home_view(request):
     def get_words(form):
-        form_data = form.cleaned_data['words']
+        form_data = form.cleaned_data['to_search']
         words = form_data.split(" ")
         http = urllib3.PoolManager()
         base_url = "https://api.dictionaryapi.dev/api/v1/entries/fr/"

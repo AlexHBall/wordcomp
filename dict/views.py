@@ -24,10 +24,7 @@ def home_view(request):
             r = http.request('GET', url)
             json_returned = json.loads(r.data.decode('utf-8'))
             data.append(json_returned)
-            # request.session["WORDS"] = json_returned 
-            # data.append(json.loads(r.data.decode('utf-8')))
 
-        print(data)
         request.session["WORDS"] = data
     request.session.flush()
     word_form = EnterWordsForm(request.POST or None)

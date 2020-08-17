@@ -2,16 +2,18 @@ $(document).ready(function () {
   var words = [];
 
   function add_word() {
-    var str = $(".words-input").val().replace(/ /g, "");
-    words.push(str);
-    console.log(words);
+    var word = $(".words-input").val().replace(/ /g, "");
+    words.push(word);
     $(".words-input").val("");
     $(".words-hidden").val(words.join(" "));
+    var ps = $("p").first();
+    var d = $("<div>", { id: "word-" + word, text: word, class: "added-word" });
+    ps.append(d);
+    //    var w = $( "[id*='word-']" )
+    //   console.log(w)
   }
-//  TODO: add a visual aid to let the user know they've added a word
   $(".words-input").keypress(function (e) {
     if (e.keyCode == 32) {
-      console.log("Spacebar pressed.");
       add_word();
     }
     if (e.which == 13) {

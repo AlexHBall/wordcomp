@@ -8,7 +8,8 @@
 <div class="entry-form">
   <form class="word-form" method="post">
     {% csrf_token %} {{ form.as_p }}
-    <p><input class="word-input" type="submit" value="define" /></p>
+    <div id ="word-container" class="words-container"></div>
+    <p><input class="word-submit" type="submit" value="define" /></p>
   </form>
 </div>
 {% endblock %}

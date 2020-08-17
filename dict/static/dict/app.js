@@ -6,7 +6,7 @@ $(document).ready(function () {
     words.push(word);
     $(".words-input").val("");
     $(".words-hidden").val(words.join(" "));
-    var ps = $("p").first();
+    var ps = $(".words-container");
     var d = $("<div>", { id: "word-" + word, text: word, class: "added-word" });
     ps.append(d);
     //    var w = $( "[id*='word-']" )

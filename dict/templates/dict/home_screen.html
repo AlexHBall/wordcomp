@@ -1,15 +1,19 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
 <link rel="stylesheet" href="{% static 'dict/apples.css' %}" />
-<script type="text/javascript" src="/static/dict/jquery.js"></script>
 <script type="text/javascript" src="/static/dict/app.js"></script>
-<div class="title">
-  <h1>Compare French words</h1>
-</div>
-<div class="entry-form-container">
-  <form class="entry-form" method="post">
-    {% csrf_token %} {{ form.as_p }}
-    <div id="words-container" class="words-container">Words to search</div>
-    <p><input class="entry-form-submit" type="submit" value="define" /></p>
-  </form>
+
+<div class="splash-container">
+  <div class="splash">
+      <h1 class="splash-head">Compare French Words</h1>
+      <div class="entry-form-container">
+        <form id="entry-form" method="post" class="pure-form">
+          {% csrf_token %}
+          <input type="text" name="words" placeholder="Search for words!" class="pure-input-rounded">
+          <button id="entry-form-submit" class="pure-button" type="submit">
+            Comapre
+          </button>
+        </form>
+      </div>
+  </div>
 </div>
 {% endblock %}

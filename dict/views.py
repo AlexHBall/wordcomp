@@ -5,8 +5,6 @@ from .forms import EnterWordsForm
 from .models import Word
 import urllib3
 import json
-from flatten_dict import flatten
-import pprint
 # Create your views here.
 
 

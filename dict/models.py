@@ -3,8 +3,7 @@ from django.db import models
 # Create your models here.
 class Word:
     def get_phonetics(self, phonetics):
-        empty_list = [{}]
-        return " Not available" if phonetics == empty_list else phonetics
+        return None if phonetics == [{}] else phonetics
 
     def get_meaning(self, meaning):
         return meaning
@@ -39,9 +38,9 @@ class WordDefinition:
         try:
             self.example = json["example"]
         except KeyError:
-            self.example = "No example available"
+            self.example = None
 
         s = ' '.join(json["synonyms"])
         a = ' '.join(json["antonyms"])
-        self.synonyms = "No synonyms available" if not s else s
-        self.antonyms = "No antonyms available" if not a else a
+        self.synonyms = None if not s else s
+        self.antonyms = None if not a else a

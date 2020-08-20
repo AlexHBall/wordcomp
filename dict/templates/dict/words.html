@@ -8,7 +8,9 @@
   <div class="float-child">
     <div class="word-header">
       <h2>{{instance.word}}</h2>
+      {% if instance.phonetics %}
       <h3>Phonetics - {{instance.phonetics}}</h3>
+      {% endif %}
       <h3>Gender - {{instance.gender}}</h3>
     </div>
     <div class="word-definitions">
@@ -16,9 +18,15 @@
       <div class="definition">
         <h3>Definition</h3>
         <p>{{ def.definition}}</p>
+        {% if def.example %}
         <p>Example: {{ def.example}}</p>
-        <p>Synonyms: {{ def.synonyms}}</p>
-        <p>Antonyms: {{ def.antonyms}}</p>
+        {% endif %}
+        {% if def.synonyms %}
+        <p>Synonyms: <a href="">{{ def.synonyms}}</a></p>
+        {% endif %}
+        {% if def.antonyms %}
+        <p>Antonyms: <a href="">{{ def.antonyms}}</a></p>
+        {% endif %}
       </div>
       {% endfor %}
     </div>

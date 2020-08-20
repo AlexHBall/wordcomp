@@ -9,17 +9,17 @@
   <div class="float-child">
     <div class="word-header">
       <h2>{{instance.word}}</h2>
-      <h3>Phonetics {{instance.phonetics}}</h3>
+      <h3>Phonetics - {{instance.phonetics}}</h3>
       <h3>Gender - {{instance.gender}}</h3>
     </div>
     <div class="word-definitions">
       {% for def in instance.definitions %}
       <div class="definition">
-        <h3>Defition</h3>
+        <h3>Definition</h3>
         <p>{{ def.definition}}</p>
-        <p>Example {{ def.example}}</p>
-        <p>Synonyms {{ def.synonyms}}</p>
-        <p>Antonyms {{ def.antonyms}}</p>
+        <p>Example: {{ def.example}}</p>
+        <p>Synonyms: {{ def.synonyms}}</p>
+        <p>Antonyms: {{ def.antonyms}}</p>
       </div>
       {% endfor %}
     </div>

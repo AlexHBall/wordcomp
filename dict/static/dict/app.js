@@ -5,13 +5,17 @@ $(document).ready(function () {
     function on_word_click(e) {
       var target = $(e.target);
       var parent = target.parent();
-      const text = target.text();
+      var text = parent.text();
+      text = text.substring(0, text.length - 2);
+      console.log(text);
       const index = words.indexOf(text);
       if (index > -1) {
         words.splice(index, 1);
       }
       $(".words-hidden").val(words.join(" "));
       parent.remove();
+      console.log(words);
+      console.log($(".words-hidden").val());
     }
     var word = $(".words-input").val().replace(/ /g, "");
     words.push(word);

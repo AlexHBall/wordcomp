@@ -16,7 +16,7 @@ $(document).ready(function () {
     words.push(word);
     $(".words-input").val("");
     $(".words-hidden").val(words.join(" "));
-    var d = $("<p>", { id: "word-" + word, text: word, class: "added-word" });
+    var d = $("<div>", { id: "word-" + word, text: word, class: "added-word" });
     d.click(on_word_click);
     $(".words-container").append(d);
   }

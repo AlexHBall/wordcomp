@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 <link rel="stylesheet" href="{% static 'dict/apples.css' %}" />
+<script type="text/javascript" src="/static/dict/app.js"></script>
 <div>
   <h1>Words Compared</h1>
 </div>
@@ -22,9 +23,18 @@
           {% if def.example %}
           <p>Example: {{ def.example}}</p>
           {% endif %} {% if def.synonyms %}
-          <p>Synonyms: <a href="">{{ def.synonyms}}</a></p>
+          <p>
+            Synonyms: {% for syn in def.synonyms %}
+            <a class="word-link" href="">{{ syn}} (Links coming soon)</a>
+            {% endfor %}
+          </p>
           {% endif %} {% if def.antonyms %}
-          <p>Antonyms: <a href="">{{ def.antonyms}}</a></p>
+
+          <p>
+            Antonyms: {% for ant in def.antonyms %}
+            <a class="word-link" href="">{{ ant}}</a>
+            {% endfor %}
+          </p>
           {% endif %}
         </div>
         {% endfor %}

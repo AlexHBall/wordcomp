@@ -1,6 +1,8 @@
 from django.db import models
 
 # Create your models here.
+
+
 class Word:
     def get_phonetics(self, phonetics):
         return None if phonetics == [{}] else phonetics
@@ -40,7 +42,7 @@ class WordDefinition:
         except KeyError:
             self.example = None
 
-        s = ' '.join(json["synonyms"])
-        a = ' '.join(json["antonyms"])
+        s = json["synonyms"]
+        a = json["antonyms"]
         self.synonyms = None if not s else s
         self.antonyms = None if not a else a

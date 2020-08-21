@@ -3,34 +3,34 @@
 <div>
   <h1>Words Compared</h1>
 </div>
-<div class="float-container">
-  {% for instance in words %}
-  <div class="float-child">
-    <div class="word-header">
-      <h2>{{instance.word}}</h2>
-      {% if instance.phonetics %}
-      <h3>Phonetics - {{instance.phonetics}}</h3>
-      {% endif %}
-      <h3>Gender - {{instance.gender}}</h3>
-    </div>
-    <div class="word-definitions">
-      {% for def in instance.definitions %}
-      <div class="definition">
-        <h3>Definition</h3>
-        <p>{{ def.definition}}</p>
-        {% if def.example %}
-        <p>Example: {{ def.example}}</p>
+<div class="content">
+  <div class="pure-g">
+    {% for instance in words %}
+    <div class="pure-u-1-{{count}}">
+      <div class="word-header">
+        <h2>{{instance.word}}</h2>
+        {% if instance.phonetics %}
+        <h3>Phonetics - {{instance.phonetics}}</h3>
         {% endif %}
-        {% if def.synonyms %}
-        <p>Synonyms: <a href="">{{ def.synonyms}}</a></p>
-        {% endif %}
-        {% if def.antonyms %}
-        <p>Antonyms: <a href="">{{ def.antonyms}}</a></p>
-        {% endif %}
+        <h3>Gender - {{instance.gender}}</h3>
       </div>
-      {% endfor %}
+      <div class="word-definitions">
+        {% for def in instance.definitions %}
+        <div class="definition">
+          <h3>Definition</h3>
+          <p>{{ def.definition}}</p>
+          {% if def.example %}
+          <p>Example: {{ def.example}}</p>
+          {% endif %} {% if def.synonyms %}
+          <p>Synonyms: <a href="">{{ def.synonyms}}</a></p>
+          {% endif %} {% if def.antonyms %}
+          <p>Antonyms: <a href="">{{ def.antonyms}}</a></p>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
     </div>
+    {% endfor %}
   </div>
-  {% endfor %}
 </div>
 {% endblock %}

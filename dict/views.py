@@ -11,7 +11,7 @@ import json
 def home_view(request):
     def get_words(form):
         form_data = form.cleaned_data['words']
-        words = form_data.split(" ")
+        words = form_data.split("/")
         http = urllib3.PoolManager()
         base_url = "https://api.dictionaryapi.dev/api/v1/entries/fr/"
         urls = []
@@ -47,4 +47,8 @@ def words_view(request):
     context = {
         'words' : [w.return_dict() for w in words]
     }
+    context['count'] = len(context['words'])
     return render(request, 'dict/words.html', context)
+
+def about_view(request):
+    return render(request, 'dict/about.html', {})

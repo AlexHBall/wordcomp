@@ -78,7 +78,14 @@ label {
   border: 2px solid #ddd;
   box-shadow: none;
   font-size: 100%;
-  width: 100%;
+  width: 80%;
+  margin-bottom: 1em;
+}
+
+#entry-form-submit{
+  box-shadow: none;
+  font-size: 100%;
+  width: auto%;
   margin-bottom: 1em;
 }
 
